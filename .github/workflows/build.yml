@@ -1,0 +1,33 @@
+# Compila o app num Mac da nuvem do GitHub e entrega o HoloFlowAR.ipa (sem assinatura).
+# A assinatura e feita no seu PC pelo Sideloadly, com o seu Apple ID.
+name: Compilar HOLOFLOW AR
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Versao do Xcode
+        run: xcodebuild -version
+      - name: Instalar XcodeGen
+        run: brew install xcodegen
+      - name: Gerar o projeto
+        run: xcodegen generate
+      - name: Compilar
+        run: |
+          set -o pipefail
+          xcodebuild -project HoloFlowAR.xcodeproj -target HoloFlowAR -configuration Release -sdk iphoneos \
+            SYMROOT="$PWD/build" CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" build | tail -200
+      - name: Empacotar o .ipa
+        run: |
+          mkdir -p Payload
+          cp -R build/Release-iphoneos/HoloFlowAR.app Payload/
+          zip -qry HoloFlowAR.ipa Payload
+          ls -la HoloFlowAR.ipa
+      - uses: actions/upload-artifact@v4
+        with:
+          name: HoloFlowAR-ipa
+          path: HoloFlowAR.ipa
