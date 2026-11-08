@@ -1,0 +1,88 @@
+HOLOFLOW AR · app de iPhone · a cidade do MNQ presa na sua mesa (ou no chão)
+=============================================================================
+Sem Mac. O GitHub compila num Mac da nuvem (gratis). O Sideloadly instala no
+iPhone pelo seu PC. Faca uma vez a PARTE 1 e a PARTE 2; depois e so a PARTE 3.
+
+---------------------------------------------------------------------------
+PARTE 1 · COMPILAR O APP NO GITHUB (uma vez, uns 15 minutos)
+---------------------------------------------------------------------------
+ 1) Entre em github.com e crie uma conta gratis (Sign up).
+ 2) Canto de cima, botao "+" > "New repository".
+      Repository name: holoflow-ar
+      Marque PUBLIC  (publico = compilacoes ilimitadas e gratis; o codigo fica
+      visivel, mas nao tem senha nem dado seu. Se preferir Private, funciona,
+      mas o GitHub da so ~15 compilacoes gratis por mes.)
+      Clique "Create repository".
+ 3) Na pagina que abriu, clique no link "uploading an existing file".
+ 4) Abra a pasta  2-APP-IPHONE\holoflow-ar  deste pacote, selecione
+    project.yml, LEIA-ME.txt e a pasta HoloFlowAR, e ARRASTE para o navegador.
+    Clique no botao verde "Commit changes".
+ 5) Agora o arquivo que manda compilar (a pasta .github fica escondida no
+    Windows, entao e mais facil criar direto no site):
+      "Add file" > "Create new file"
+      No nome do arquivo digite exatamente:   .github/workflows/build.yml
+      (ao digitar as barras, o GitHub cria as pastas sozinho)
+      Abra o arquivo  2-APP-IPHONE\build.yml.txt  no Bloco de Notas, copie
+      TUDO e cole na caixa grande. Clique "Commit changes".
+ 6) Clique na aba "Actions" (em cima). Vai aparecer "Compilar HOLOFLOW AR"
+    rodando (bolinha amarela). Espere uns 10 minutos.
+      VERDE  = deu certo -> passo 7.
+      VERMELHO = clique nela > clique em "build" > abra o passo com X vermelho
+      > copie as linhas com "error:" e me mande. Eu corrijo e te digo qual
+      arquivo trocar (no GitHub: abra o arquivo > lapis de editar > colar >
+      Commit). Ele recompila sozinho.
+ 7) Clique na compilacao verde. Role ate "Artifacts" e baixe "HoloFlowAR-ipa".
+    Descompacte: sai o arquivo  HoloFlowAR.ipa.
+
+---------------------------------------------------------------------------
+PARTE 2 · INSTALAR NO IPHONE (uma vez; repetir a cada 7 dias)
+---------------------------------------------------------------------------
+ 1) No PC instale o iTunes (do site da Apple: apple.com/itunes) e o
+    Sideloadly (sideloadly.io).
+ 2) Ligue o iPhone no PC pelo cabo. No iPhone toque em "Confiar".
+ 3) Abra o Sideloadly: arraste o HoloFlowAR.ipa, digite o seu Apple ID e
+    clique Start (ele pode pedir a senha do Apple ID e o codigo de 2 fatores).
+ 4) No iPhone: Ajustes > Geral > VPN e Gerenciamento de Dispositivo >
+    toque no seu e-mail > Confiar.
+ 5) No iPhone: Ajustes > Privacidade e Seguranca > Modo de Desenvolvedor >
+    LIGAR (o iPhone reinicia e pergunta de novo: Ativar).
+ Com Apple ID gratis o app para de abrir depois de 7 dias: e so repetir o
+ passo 3 com o mesmo .ipa (1 minuto). Para vender depois: conta de
+ desenvolvedor Apple (US$ 99/ano) e TestFlight, sem esse limite.
+
+---------------------------------------------------------------------------
+PARTE 3 · USAR (toda vez)
+---------------------------------------------------------------------------
+ 1) PC: abra o cmd na pasta 1-PC\mnq e rode:
+        python holoflow_server.py --lan
+    Ele mostra o endereco do celular, ex.:  http://192.168.1.20:8030
+    Se o Windows perguntar do Firewall: marque "Redes privadas" > Permitir.
+ 2) NinjaTrader: grafico do MNQ com o indicador HoloFlowBridge
+    (instalacao do indicador: veja 1-PC\mnq\LEIA-ME.txt).
+ 3) iPhone e PC na MESMA rede Wi-Fi. Abra o HOLOFLOW no iPhone.
+    Na primeira vez ele pede o IP do PC: digite so o numero (ex.: 192.168.1.20)
+    e toque Conectar. Permita "Rede local" e "Camera" quando o iPhone pedir.
+ 4) Aponte para a mesa ou o chao e mova o celular devagar.
+    Aparece um CONTORNO AZUL mostrando onde a cidade vai nascer.
+    Escolha o tamanho: MESA (45 cm) · CHAO (1,8 m) · GIGANTE (4,5 m)
+    e toque em "COLOCAR AQUI" (ou toque direto na superficie).
+    A cidade sobe do chao, presa ali.
+ 5) Gestos: 1 dedo arrasta · 2 dedos giram · pinca aumenta/diminui.
+    Ande em volta, abaixe, chegue perto: ela fica no lugar.
+    No GIGANTE da pra andar no meio dos predios.
+    CONGELAR para o tempo para voce examinar. MUDAR LUGAR recomeca.
+
+O QUE VOCE VE
+  Predios ciano = ordens de COMPRA · magenta = VENDA · altura = tamanho
+  Topos neon brilhando nas ruas mais recentes; muros grandes com halo
+  As ruas deslizam para tras = o passado. Rio dourado = o preco.
+  Coluna de luz + numero dourado flutuando = preco atual.
+  Parede de luz varrendo a cidade = o scanner.
+  Faiscas subindo = cada negocio de 3+ contratos.
+  BALEIA (40+ contratos): feixe de luz, ondas no chao, "BALEIA COMPRANDO"
+  flutuando e o celular VIBRA forte.
+  Moldura e bordas da tela verdes na alta, vermelhas na queda.
+  Cone na frente = projecao dos proximos 15 s (probabilidade) com o
+  placar real de acertos no painel.
+  iPhone Pro (LiDAR): moveis e maos passam NA FRENTE da cidade.
+  Outros iPhones: a sua mao passa na frente.
